@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.border-styles {
+    @apply border border-black rounded border-x-0 lg:border-l lg:border-r-4 border-b-4 m-2 w-full h-auto;
+}
+
+.party-widget-list {
+    @apply relative grid place-items-center w-full max-w-7xl;
+}
+
+.party-widget-input {
+    @apply border-styles;
+}
+
+.party-widget-input .party-widget-header {
+    @apply bg-white border-b border-black px-3 py-2 text-lg;
+}
+
+.party-widget-input .party-widget-contents {
+    @apply bg-white px-3 py-2 h-48;
+}
+
+.party-widget-input textarea {
+    @apply block bg-inherit resize-none outline-none w-full h-full;
+}
+
+.party-widget-ai {
+    @apply border-styles font-mono;
+}
+
+.party-widget-ai .party-widget-header {
+    @apply flex flex-wrap bg-yellow-200 border-b border-black px-3 py-2 text-lg;
+}
+
+.party-widget-ai .party-widget-contents {
+    @apply bg-gray-200 px-3 py-2 min-h-48 max-h-96 overflow-auto whitespace-pre-line;
+}
+
+.party-widget-ai .party-widget-contents-image {
+    @apply bg-gray-200 px-3 py-2 min-h-48 max-h-fit overflow-auto whitespace-pre-line;
+}
+
+.party-widget-placeholder {
+    @apply text-gray-400;
+}
+
+.party-widget-placeholder .party-widget-placeholder-highlighter {
+    @apply p-1 rounded font-semibold bg-yellow-300;
+}
+
+.party-widget-static {
+    @apply m-2 w-full h-auto;
+}
+
+.party-widget-static .party-widget-header {
+    @apply border-b-2 border-black px-3 py-2 text-lg;
+}
+
+.party-widget-static .party-widget-contents {
+    @apply px-3 py-2 h-auto;
+}
+
+.party-widget-static .party-widget-contents h1 {
+    @apply text-2xl font-semibold mt-6;
+}
+
+.party-widget-static .party-widget-contents h2 {
+    @apply text-xl font-semibold mt-7;
+}
+
+.party-widget-static .party-widget-contents h3 {
+    @apply text-lg font-semibold mt-7;
+}
+
+.party-widget-static .party-widget-contents h4 {
+    @apply text-base font-semibold mt-4;
+}
+
+.party-widget-static .party-widget-contents h5 {
+    @apply text-base font-semibold mt-4;
+}
+
+.party-widget-static .party-widget-contents h6 {
+    @apply text-base font-semibold mt-4;
+}
+
+.party-widget-static .party-widget-contents ul {
+    @apply list-disc list-inside;
+}
+
+.party-widget-static .party-widget-contents ol {
+    @apply list-decimal list-inside;
+}
+
+.party-widget-static .party-widget-contents p {
+    @apply my-4;
+}
+
+.party-widget-static .party-widget-contents pre {
+    @apply text-white bg-stone-800 rounded p-4 ml-2;
+}
+
+.party-widget-static .party-widget-contents hr {
+    @apply border-gray-500;
+}
+
+.party-widget-static .party-widget-contents blockquote {
+    @apply border-l-4 border-gray-500 pl-4;
+}
+
+.party-widget-loading {
+    @apply flex space-x-2 items-center bg-yellow-200 h-8;
+}
+
+.party-widget-loading-dot1 {
+    @apply h-4 w-2 bg-black rounded-full animate-bounce;
+}
+
+.party-widget-loading-dot2 {
+    @apply h-4 w-2 bg-black rounded-full animate-bounce [animation-delay:-0.25s];
+}
+
+.party-widget-loading-dot3 {
+    @apply h-4 w-2 bg-black rounded-full animate-bounce [animation-delay:-0.5s];
+}
+
+.party-body {
+    @apply flex min-h-screen flex-col items-center justify-between py-24 lg:px-24 bg-gradient-to-r from-yellow-300 via-white to-white text-black;
+}
+
+.party-body a {
+    @apply underline;
+}
+
+.party-header {
+    @apply z-10 max-w-5xl w-fit items-center justify-between text-3xl font-bold lg:font-semibold pb-16 lg:flex lg:text-5xl;
+}
+
+.party-header h1 {
+    @apply fixed left-0 top-0 flex w-full justify-center pb-4 pt-8 bg-white border-black border-b-2 px-4 shadow;
+}
+
+.party-footer {
+    @apply border-t border-black pt-2 mt-8 mb-8 lg:mb-16 text-center text-sm lg:text-base w-full lg:max-w-5xl lg:text-left;
+}

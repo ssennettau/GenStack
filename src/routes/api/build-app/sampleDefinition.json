@@ -1,0 +1,63 @@
+{
+    "result": {
+        "data": {
+            "appId": "RviOWmYjD",
+            "username": "ssennettau",
+            "creationDate": "2023-12-14T00:51:34.965Z",
+            "definition": {
+                "version": 1,
+                "widgets": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "type": "static-text",
+                        "title": "Haiku Generator",
+                        "width": 12,
+                        "height": 3,
+                        "content": "Create a haiku poem based on your input."
+                    },
+                    {
+                        "x": 0,
+                        "y": 3,
+                        "type": "text-input",
+                        "title": "User input",
+                        "width": 5,
+                        "height": 3,
+                        "placeholder": "Enter a topic for your haiku here"
+                    },
+                    {
+                        "x": 5,
+                        "y": 3,
+                        "type": "inferred-text",
+                        "title": "Generated Haiku",
+                        "width": 7,
+                        "height": 5,
+                        "prompt": "Generate a 5-7-5 syllable haiku poem about [User input]",
+                        "parameters": {
+                            "temperature": 0
+                        },
+                        "placeholder": "Generating haiku..."
+                    },
+                    {
+                        "x": 0,
+                        "y": 6,
+                        "type": "image",
+                        "title": "Visual",
+                        "width": 5,
+                        "height": 10,
+                        "imageDescription": "An image of [Generated Haiku] "
+                    }
+                ]
+            },
+            "title": " Haiku Creator",
+            "lastModifiedDate": "2023-12-14T00:51:34.965Z",
+            "publishedVersion": null,
+            "version": 0,
+            "sourceApp": {
+                "id": "jAJQ4WYAS",
+                "title": " Haiku Creator",
+                "username": "partyrock"
+            }
+        }
+    }
+}

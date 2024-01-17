@@ -1,0 +1,25 @@
+name: Deploy PartySmith
+on: 
+  push:
+    branches:
+      - main
+concurrency:
+  group: merge-${{ github.ref }}
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  DeployApp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::672107698272:role/GitHubActionsRole
+          role-duration-seconds: 3600
+          aws-region: us-east-1
+      - name: Deploy PartySmith with SST
+        run: |
+          npm i && npx sst deploy --stage prod
