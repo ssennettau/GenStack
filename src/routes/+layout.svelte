@@ -1,5 +1,6 @@
 <script>
   import "../app.css";
+  import { dev } from '$app/environment';
 </script>
 
 <head>
@@ -18,11 +19,17 @@
   <header class="pt-16 text-center">
     <h1 class="text-4xl text-yellow-400 font-semibold">PartySmith</h1>
     <p class="text-gray-300 text-lg">Bringing the party to your place.</p>
+    {#if dev}
+      <p class="text-sm text-yellow-200">&mdash; &#x26A0; Running in Development Mode &#x26A0; &mdash;</p>
+    {/if}
   </header>
   <slot />
 </div>
 
 <footer class="flex flex-col items-center py-4 bg-gray-800 text-gray-300 fixed bottom-0 w-full">
+  {#if dev}
+    <p class="text-xs text-yellow-200">&mdash; &#x26A0; Running in Development Mode &#x26A0; &mdash;</p>
+  {/if}
   <div class="text-base">&copy; 2024 <a href="https://ssennett.net/" class="font-semibold hover:text-gray-500" target="_blank">Stephen Sennett</a></div>
   <div class="text-sm"><a href="https://github.com/ssennettau/partysmith/" class="font-semibold hover:text-gray-500" target="_blank">GitHub</a></div>
 </footer>
