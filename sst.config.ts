@@ -12,10 +12,10 @@ export default {
   stacks(app) {
     app.stack(function Site({ stack }) {
       const site = new SvelteKitSite(stack, "site", {
-        customDomain: {
+        customDomain: stack.stage == "prod" ? {
           domainName: "partysmith.ssennett.net",
           hostedZone: "ssennett.net",
-        },
+        } : undefined,
       });
       const templateLayer = new LayerVersion(stack, "templateLayer", {
         code: Code.fromAsset("src/templateLayer"),
