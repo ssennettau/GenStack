@@ -1,6 +1,6 @@
 import type { SSTConfig } from "sst";
 import { SvelteKitSite } from "sst/constructs";
-import { Code, LayerVersion } from "aws-cdk-lib/aws-lambda";
+import { Code, Function, LayerVersion } from "aws-cdk-lib/aws-lambda";
 
 export default {
   config(_input) {
@@ -17,9 +17,13 @@ export default {
           hostedZone: "ssennett.net",
         } : undefined,
       });
+
       const templateLayer = new LayerVersion(stack, "templateLayer", {
         code: Code.fromAsset("src/templateLayer"),
       });
+
+      const backendFunction: Function = site.cdk?.function as Function;
+      backendFunction.addLayers(templateLayer);
 
       stack.addOutputs({
         url: site.url,
