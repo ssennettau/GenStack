@@ -1,6 +1,7 @@
 import type { SSTConfig } from "sst";
 import { SvelteKitSite } from "sst/constructs";
 import { Code, Function, LayerVersion } from "aws-cdk-lib/aws-lambda";
+import { RetentionDays } from "aws-cdk-lib/aws-logs";
 
 export default {
   config(_input) {
@@ -11,23 +12,26 @@ export default {
   },
   stacks(app) {
     app.stack(function Site({ stack }) {
+      const templateLayer = new LayerVersion(stack, "templateLayer", {
+        code: Code.fromAsset("src/templateLayer"),
+      });
+
       const site = new SvelteKitSite(stack, "site", {
         customDomain: stack.stage == "prod" ? {
           domainName: "partysmith.ssennett.net",
           hostedZone: "ssennett.net",
         } : undefined,
+        cdk: {
+          server: {
+            logRetention: RetentionDays.INFINITE,
+            layers: [templateLayer]
+          }
+        }
       });
-
-      const templateLayer = new LayerVersion(stack, "templateLayer", {
-        code: Code.fromAsset("src/templateLayer"),
-      });
-
-      const backendFunction: Function = site.cdk?.function as Function;
-      backendFunction.addLayers(templateLayer);
 
       stack.addOutputs({
         url: site.url,
-        templateLayerArn: templateLayer.layerVersionArn,
+        distributionId: site.cdk?.distribution.distributionId,
       });
     });
   },
