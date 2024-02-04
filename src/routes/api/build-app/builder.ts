@@ -1,19 +1,38 @@
+// Core node modules
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
 
+// Utilities
 import { createRequire } from 'module';
 import { promisify } from 'util';
-
-import archiver from 'archiver';
-import fse from 'fs-extra';
-
-const mkdir = promisify(fs.mkdir);
 const require = createRequire(import.meta.url);
 const writeFile = promisify(fs.writeFile);
 
+// Third-party modules
+import archiver from 'archiver';
+import fse from 'fs-extra';
+
+// Environmental Status
+import { dev } from '$app/environment';
+const checkLambda = !!process.env.LAMBDA_TASK_ROOT;
+
+// PowerTools for AWS Lambda
+import { Metrics, MetricUnits } from '@aws-lambda-powertools/metrics';
+import { Logger } from '@aws-lambda-powertools/logger';
+const metrics = new Metrics({
+  namespace: "PartySmith-experimental",
+  serviceName: "builder",
+  defaultDimensions: {
+    environment: dev ? "development" : "production"
+  }
+});
+const logger = new Logger({
+  serviceName: "/PartySmith-experimental/builder",
+})
+
 // SST won't bundle the templates, so in Prod it relies on a Lambda Layer to host the templates.
-const baseTemplateDir = !!process.env.LAMBDA_TASK_ROOT ? "/opt/templates" : "./src/templateLayer/templates";
+const baseTemplateDir = checkLambda ? "/opt/templates" : "./src/templateLayer/templates";
 
 export async function buildPartySmithApp(request: AppRequest) {
   console.log("Parsing request...");
@@ -37,7 +56,7 @@ export async function buildPartySmithApp(request: AppRequest) {
     //response = require('./sampleDefinition.json');
   } catch (error) {
     console.error(error);
-    return generateError(requestId, "FailureGetAppDetails");
+    return generateError(requestId, request, "FailureGetAppDetails");
   }
 
   try {
@@ -47,7 +66,7 @@ export async function buildPartySmithApp(request: AppRequest) {
     await loadDefinitionFile(tempPath, response);
   } catch (err) {
     console.error(err);
-    return generateError(requestId, "FailureLoadTemplateFiles");
+    return generateError(requestId, request, "FailureLoadTemplateFiles");
   }
 
   try {
@@ -59,12 +78,25 @@ export async function buildPartySmithApp(request: AppRequest) {
     await updatePackageJson(tempPath, request);
   } catch (err) {
     console.error(err);
-    return generateError(requestId, "FailureUpdateDynamics");
+    return generateError(requestId, request, "FailureUpdateDynamics");
   }
 
   try {
     const zipFilePath = await createZipArchive(tempPath);
     const zipFileContents = await readZipArchive(zipFilePath);
+
+    metrics.addMetric("BuildSuccess", MetricUnits.Count, 1);
+    metrics.publishStoredMetrics();
+
+    logger.info("Build Success", {
+      requestId: requestId,
+      environment: dev ? "development" : "production",
+      url: request.url,
+      options: {
+        stylesheet: request.optStylesheet,
+        sst: request.optSst,
+      }
+    });
 
     return {
       status: true,
@@ -75,7 +107,7 @@ export async function buildPartySmithApp(request: AppRequest) {
     };
   } catch (err) {
     console.error(err);
-    return generateError(requestId, "FailureBuildZipArchive");
+    return generateError(requestId, request, "FailureBuildZipArchive");
   }
 }
 
@@ -306,7 +338,21 @@ async function readZipArchive(zipFilePath: string) {
   }
 }
 
-function generateError(requestId: string, detail: string) {
+function generateError(requestId: string, request: AppRequest, detail: string) {
+  metrics.addMetric('BuildFailure', MetricUnits.Count, 1);
+  metrics.publishStoredMetrics();
+
+  logger.error("Build Failed", {
+    requestId: requestId,
+    failureDetails: detail,
+    environment: dev ? "development" : "production",
+    url: request.url,
+    options: {
+      stylesheet: request.optStylesheet,
+      sst: request.optSst,
+    }
+  });
+
   return {
     status: false,
     body: {
