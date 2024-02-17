@@ -4,7 +4,7 @@ import { SvelteKitSite } from "sst/constructs";
 export default {
   config(_input) {
     return {
-      name: "partysmithapp",
+      name: "genstackapp",
       region: "us-east-1",
     };
   },

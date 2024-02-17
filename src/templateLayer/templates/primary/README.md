@@ -1,6 +1,6 @@
-# PartySmith-App-[APPNAME]
+# GenStack-App-[APPNAME]
 
-This app was built based on an [AWS PartyRock](https://partyrock.aws/) app, using the community project [PartySmith](https://partysmith.ssennett.net/).
+This app was built based on an [AWS PartyRock](https://partyrock.aws/) app, using the community project [GenStack](https://partysmith.ssennett.net/).
 
 ![Generic Sample App Screenshot](docs/screenshot-app.png)
 
@@ -38,21 +38,21 @@ npm run build
 
 ## Customization
 
-The purpose of PartySmith and apps like this is to enable developers to experiment with Amazon Bedrock in web applications.
+The purpose of GenStack and apps like this is to enable developers to experiment with Amazon Bedrock in web applications.
 
-> **Note:** While PartySmith apps can be used and hosted, they're designed as an experimental platform to help the developer experience, and are not intended for production usage.
+> **Note:** While GenStack apps can be used and hosted, they're designed as an experimental platform to help the developer experience, and are not intended for production usage.
 
 Below is some information to help you get started customizing your application.
 
 ### Definition File
 
-PartyRock applications use a structured JSON object to determine the application's structure, including the widgets provided to the user. When you generate a PartySmith application, it uses a copy of this JSON object.
+PartyRock applications use a structured JSON object to determine the application's structure, including the widgets provided to the user. When you generate a GenStack application, it uses a copy of this JSON object.
 
 You can find the object at `./src/lib/stores/definition.json`.
 
 ### Themes and Styling
 
-By default, PartySmith applications will use a stylesheet generated with [Tailwind CSS](https://tailwindcss.com/) to style the application in a manner similar to the default PartyRock theme. You may also have disabled this using the generator.
+By default, GenStack applications will use a stylesheet generated with [Tailwind CSS](https://tailwindcss.com/) to style the application in a manner similar to the default PartyRock theme. You may also have disabled this using the generator.
 
 This project will attempt to load the contents of `./src/app.css`, which can be modified to meet your needs.
 

@@ -247,7 +247,7 @@ async function addSST(tempPath: string, appName: string) {
     console.debug("Updating sst.config.ts file");
     const sstConfigPath = path.join(tempPath, "sst.config.ts");
     const sstConfigContents = await fs.promises.readFile(sstConfigPath, 'utf8');
-    updatedContents = sstConfigContents.replace(/partysmithapp/g, packageName);
+    updatedContents = sstConfigContents.replace(/genstackapp/g, packageName);
     await fs.promises.writeFile(sstConfigPath, updatedContents);
     return true;
   } catch (error) {
