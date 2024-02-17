@@ -1,8 +1,8 @@
 name: Deploy GenStack (Dev)
 on: 
-  push:
+  pull_request:
     branches:
-      - '!main'
+      - main
 concurrency:
   group: merge-${{ github.ref }}
 permissions:
