@@ -21,20 +21,20 @@ const checkLambda = !!process.env.LAMBDA_TASK_ROOT;
 import { Metrics, MetricUnits } from '@aws-lambda-powertools/metrics';
 import { Logger } from '@aws-lambda-powertools/logger';
 const metrics = new Metrics({
-  namespace: "PartySmith-experimental",
+  namespace: "GenStack-experimental",
   serviceName: "builder",
   defaultDimensions: {
     environment: dev ? "development" : "production"
   }
 });
 const logger = new Logger({
-  serviceName: "/PartySmith-experimental/builder",
+  serviceName: "/GenStack-experimental/builder",
 })
 
 // SST won't bundle the templates, so in Prod it relies on a Lambda Layer to host the templates.
 const baseTemplateDir = checkLambda ? "/opt/templates" : "./src/templateLayer/templates";
 
-export async function buildPartySmithApp(request: AppRequest) {
+export async function buildGenStackApp(request: AppRequest) {
   console.log("Parsing request...");
   const requestId = crypto.randomUUID();
   console.debug({

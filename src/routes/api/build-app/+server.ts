@@ -11,7 +11,7 @@ export async function POST(requestEvent): Promise<Response> {
     };
 
     let response: any;
-    response = await builder.buildPartySmithApp(appRequest);
+    response = await builder.buildGenStackApp(appRequest);
 
     if (response.status == true) {
         return new Response(JSON.stringify(response.body), {
