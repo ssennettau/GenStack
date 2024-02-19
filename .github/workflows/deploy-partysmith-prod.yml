@@ -1,4 +1,4 @@
-name: Deploy PartySmith (Prod)
+name: Deploy GenStack (Prod)
 on: 
   push:
     branches:
@@ -20,6 +20,6 @@ jobs:
           role-to-assume: arn:aws:iam::672107698272:role/GitHubActionsRole
           role-duration-seconds: 3600
           aws-region: us-east-1
-      - name: Deploy PartySmith with SST
+      - name: Deploy GenStack with SST
         run: |
           npm i && npx sst deploy --stage prod

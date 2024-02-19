@@ -4,20 +4,24 @@
 </script>
 
 <head>
-  <title>PartySmith</title>
-  <meta name="description" content="PartySmith transforms your AWS PartyRock apps into deployable full-stack SvelteKit applications.">
+  <title>GenStack</title>
+  <meta name="description" content="GenStack transforms your AWS PartyRock apps into deployable full-stack SvelteKit applications.">
   <meta name="author" content="Stephen Sennett">
-  <meta name="og:title" content="PartySmith">
-  <meta name="og:description" content="PartySmith transforms your AWS PartyRock apps into deployable full-stack SvelteKit applications.">
+  <meta name="og:title" content="GenStack">
+  <meta name="og:description" content="GenStack transforms your AWS PartyRock apps into deployable full-stack SvelteKit applications.">
   <meta name="og:locale" content="en_AU">
   <meta name="og:local:alternate" content="en_US">
   <meta name="og:url" content="https://partysmith.ssennett.net/">
   <meta name="og:image" content="https://partysmith.ssennett.net/logo.jpg">
 </head>
 
-<div class="min-h-screen flex flex-col">
-  <header class="pt-16 mb-4 text-center">
-    <h1 class="text-4xl text-yellow-400 font-semibold"><a href="/">PartySmith</a></h1>
+<div class="flex flex-col justify-center items-center">
+  <header class="pt-16 mb-16 text-center">
+    <h1 class="text-4xl text-yellow-400 font-semibold mb-2">
+      <a href="/">
+        <img src="/header.png" alt="GenStack" class="w-4/5 max-w-2xl m-auto rounded-xl border-2 border-gray-900 shadow-xl" />
+      </a>
+    </h1>
     <p class="text-gray-300 text-lg">Bringing the party to your place.</p>
     {#if dev}
       <p class="text-sm text-yellow-200">&mdash; &#x26A0; Running in Development Mode &#x26A0; &mdash;</p>
@@ -34,5 +38,6 @@
   <div class="text-sm">
     <a href="/about" class="font-semibold hover:text-gray-500">About</a> 
     | 
-    <a href="https://github.com/ssennettau/partysmith/" class="font-semibold hover:text-gray-500" target="_blank">GitHub</a></div>
+    <a href="https://github.com/ssennettau/partysmith/" class="font-semibold hover:text-gray-500" target="_blank">GitHub</a>
+  </div>
 </footer>

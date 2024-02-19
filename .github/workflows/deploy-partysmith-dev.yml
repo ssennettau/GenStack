@@ -1,8 +1,8 @@
-name: Deploy PartySmith (Dev)
+name: Deploy GenStack (Dev)
 on: 
-  push:
+  pull_request:
     branches:
-      - '!main'
+      - main
 concurrency:
   group: merge-${{ github.ref }}
 permissions:
@@ -20,6 +20,6 @@ jobs:
           role-to-assume: arn:aws:iam::672107698272:role/GitHubActionsRole
           role-duration-seconds: 3600
           aws-region: us-east-1
-      - name: Deploy PartySmith with SST
+      - name: Deploy GenStack with SST
         run: |
           npm i && npx sst deploy --stage dev

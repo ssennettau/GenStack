@@ -8,7 +8,7 @@
   let isError: boolean = false;
   let errorMessage: string;
 
-  console.log("PartySmith Loaded");
+  console.log("GenStack Loaded");
 
   const regexPattern = new RegExp("^http[s]{0,1}:\/\/partyrock.aws\/u\/.+?\/.*");
   $: validUrl = regexPattern.test(textUrl);
