@@ -11,8 +11,8 @@
   <meta name="og:description" content="GenStack transforms your AWS PartyRock apps into deployable full-stack SvelteKit applications.">
   <meta name="og:locale" content="en_AU">
   <meta name="og:local:alternate" content="en_US">
-  <meta name="og:url" content="https://partysmith.ssennett.net/">
-  <meta name="og:image" content="https://partysmith.ssennett.net/logo.jpg">
+  <meta name="og:url" content="https://genstack.ssennett.net/">
+  <meta name="og:image" content="https://genstack.ssennett.net/logo.jpg">
 </head>
 
 <div class="flex flex-col justify-center items-center">
@@ -38,6 +38,6 @@
   <div class="text-sm">
     <a href="/about" class="font-semibold hover:text-gray-500">About</a> 
     | 
-    <a href="https://github.com/ssennettau/partysmith/" class="font-semibold hover:text-gray-500" target="_blank">GitHub</a>
+    <a href="https://github.com/ssennettau/genstack/" class="font-semibold hover:text-gray-500" target="_blank">GitHub</a>
   </div>
 </footer>

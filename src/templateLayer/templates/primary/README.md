@@ -1,6 +1,6 @@
 # GenStack-App-[APPNAME]
 
-This app was built based on an [AWS PartyRock](https://partyrock.aws/) app, using the community project [GenStack](https://partysmith.ssennett.net/).
+This app was built based on an [AWS PartyRock](https://partyrock.aws/) app, using the community project [GenStack](https://genstack.ssennett.net/).
 
 ![Generic Sample App Screenshot](docs/screenshot-app.png)
 

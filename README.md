@@ -8,7 +8,7 @@ This is an unofficial community project, and not directly affiliated with Amazon
 
 ## Usage
 
-You can use GenStack either by going to the production site at [partysmith.ssennett.net](https://partysmith.ssennett.net/), or by cloning this repo and running the application yourself.
+You can use GenStack either by going to the production site at [genstack.ssennett.net](https://genstack.ssennett.net/), or by cloning this repo and running the application yourself.
 
 ![GenStack Screenshot](docs/screenshot-ps.png)
 
@@ -21,8 +21,8 @@ Try a [demo](https://demo.partysmith.ssennett.net/) based on the [Costume Theme 
 If you'd like to run this app itself, you can clone the repo to your own machine, install the necessary packages, and run it locally in development mode.
 
 ```bash
-git clone https://github.com/ssennettau/partysmith.git
-cd partysmith
+git clone https://github.com/ssennettau/genstack.git
+cd genstack
 npm install
 npm run dev
 ```
