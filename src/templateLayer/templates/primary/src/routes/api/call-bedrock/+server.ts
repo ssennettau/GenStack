@@ -31,6 +31,12 @@ export async function POST(requestEvent): Promise<Response> {
         case "bedrock-cohere.command-v14":
             response = await models.TextCohereCommand(body.prompt, body.temperature, body.topP);
             break;
+        case "bedrock-meta.llama2-13b-chat-v1":
+            response = await models.TextMetaLlama2_13b(body.prompt, body.temperature, body.topP);
+            break;
+        case "bedrock-meta.llama2-70b-chat-v1":
+            response = await models.TextMetaLlama2_70b(body.prompt, body.temperature, body.topP);
+            break;
         case "bedrock-stable-diffusion-xl":
             response = await models.ImageStableDiffusion(body.prompt);
             break;
