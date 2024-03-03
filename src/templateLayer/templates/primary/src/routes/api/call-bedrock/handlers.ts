@@ -139,6 +139,36 @@ export async function TextCohereCommand(prompt: string, temperature = 0.9, topP 
     return response;
 }
 
+export async function TextMetaLlama2_13b(prompt: string, temperature = 0, topP = 0.9): Promise<string> {
+    prompt = `Human: ${prompt}\n\nAssistant:`;
+
+    const params = createParams({
+        prompt: prompt,
+        temperature: temperature,
+        top_p: topP,
+        max_gen_len: 512,
+    }, 'meta.llama2-13b-chat-v1');
+
+    const response = await sendBedrockCommand(params, (response) => response.generation.trim());
+
+    return response;
+}
+
+export async function TextMetaLlama2_70b(prompt: string, temperature = 0, topP = 0.9): Promise<string> {
+    prompt = `Human: ${prompt}\n\nAssistant:`;
+
+    const params = createParams({
+        prompt: prompt,
+        temperature: temperature,
+        top_p: topP,
+        max_gen_len: 512,
+    }, 'meta.llama2-70b-chat-v1');
+
+    const response = await sendBedrockCommand(params, (response) => response.generation.trim());
+
+    return response;
+}
+
 export async function ImageStableDiffusion(prompt: string): Promise<string> {
 
     // Special sauce to create a descriptive prompt for the image
